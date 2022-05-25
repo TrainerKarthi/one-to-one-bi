@@ -14,16 +14,17 @@ public class TestGetVehicleCharsey {
 		Vehicle vehicle = entityManager.find(Vehicle.class,2);
 		
 		if (vehicle != null) {
+			 
+			Charsey charsey = vehicle.getCharsey();
+			System.out.println(charsey.getCharseyNumber());
+			System.out.println(charsey.getType());
 			
 			System.out.println(vehicle.getName());
 			System.out.println(vehicle.getCost());
-
+			
 		} else {
 			System.out.println("no vehicle found");
 		}
-		
-		
-		
 	}
 
 }

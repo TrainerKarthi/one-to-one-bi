@@ -2,6 +2,7 @@ package com.ty.onetoonebi;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,11 +18,13 @@ public class Vehicle {
 	private long cost;
 
 //	@OneToOne(cascade = CascadeType.PERSIST) // here if we just persist the vehicle i.e. entityManager.persist(vehicle)
-												// no need to persist the child table i.e.charsey table
-	
+	// no need to persist the child table i.e.charsey table
+
 //	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.MERGE})//if we want multiple cascades we use the arrays
-	
-	@OneToOne(cascade = CascadeType.ALL)//if we want all cascades we use ALL
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // if we want all cascades we use ALL
+	// one to one mapping is eager type if we done it as a lazy then instead of
+	// creating one query it will be done by two or more queries
 	@JoinColumn
 	private Charsey charsey;
 
